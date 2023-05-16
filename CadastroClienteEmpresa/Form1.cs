@@ -22,6 +22,7 @@ namespace CadastroClienteEmpresa
         {
             Clear();
             this.ActiveControl = txtNome;
+            LoadData();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -58,7 +59,21 @@ namespace CadastroClienteEmpresa
                 db.SaveChanges();
             }
             Clear();
+            LoadData();
             MessageBox.Show("Salvo com sucesso!");
+        }
+
+        void LoadData()
+        {
+            dataGridView1.AutoGenerateColumns = false;
+            using(EFBANCO_CLIENTEEntities db = new EFBANCO_CLIENTEEntities())
+            {
+
+                //dgClienteID.IsDataBound = db.Clientes.ToList<Cliente>();
+
+                dataGridView1.DataSource = db.Clientes.ToList<Cliente>();
+               
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
