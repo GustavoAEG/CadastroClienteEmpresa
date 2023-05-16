@@ -12,6 +12,7 @@ namespace CadastroClienteEmpresa
 {
     public partial class Form1 : Form
     {
+        Cliente model = new Cliente();
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,16 @@ namespace CadastroClienteEmpresa
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void Clear()
+        {
+            txtNome.Text = txtEndereco.Text = txtEmail.Text = txtSexo.Text = txtTelefone.Text = txtCPF.Text = txtDataNascimento.Text = "";
         }
     }
 }
