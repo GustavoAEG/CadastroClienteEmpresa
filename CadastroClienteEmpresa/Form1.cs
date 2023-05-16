@@ -20,7 +20,8 @@ namespace CadastroClienteEmpresa
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Clear();
+            this.ActiveControl = txtNome;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -30,12 +31,39 @@ namespace CadastroClienteEmpresa
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Clear();
         }
 
         void Clear()
         {
             txtNome.Text = txtEndereco.Text = txtEmail.Text = txtSexo.Text = txtTelefone.Text = txtCPF.Text = txtDataNascimento.Text = "";
+            btnSalvar.Text = "Salvar";
+            btnDeletar.Enabled = false;
+            model.ID = 0;
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            model.Nome = txtNome.Text.Trim();
+            model.Telefone = txtTelefone.Text.Trim();
+            model.Email = txtEmail.Text.Trim();
+            model.CPF = txtCPF.Text.Trim();
+            model.Sexo = txtSexo.Text.Trim();
+            model.Endereco = txtEndereco.Text.Trim();
+            model.DataNascimento = DateTime.Parse(txtDataNascimento.Text.Trim());
+
+            using(EFBANCO_CLIENTEEntities db = new EFBANCO_CLIENTEEntities())
+            {
+                db.Clientes.Add(model);
+                db.SaveChanges();
+            }
+            Clear();
+            MessageBox.Show("Salvo com sucesso!");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

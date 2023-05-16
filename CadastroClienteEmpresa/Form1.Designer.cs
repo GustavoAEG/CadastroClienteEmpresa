@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -47,6 +47,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnDeletar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.dgClienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgEndereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDataNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,24 +82,37 @@
             this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgClienteID,
+            this.dgNome,
+            this.dgCPF,
+            this.dgTelefone,
+            this.dgEmail,
+            this.dgSexo,
+            this.dgEndereco,
+            this.dgDataNascimento});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleTurquoise;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(404, 25);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(384, 396);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtCPF
             // 
@@ -209,6 +230,63 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // dgClienteID
+            // 
+            this.dgClienteID.DataPropertyName = "ID";
+            this.dgClienteID.HeaderText = "ClienteID";
+            this.dgClienteID.Name = "dgClienteID";
+            this.dgClienteID.ReadOnly = true;
+            this.dgClienteID.Visible = false;
+            // 
+            // dgNome
+            // 
+            this.dgNome.DataPropertyName = "Nome";
+            this.dgNome.HeaderText = "Nome";
+            this.dgNome.Name = "dgNome";
+            this.dgNome.ReadOnly = true;
+            // 
+            // dgCPF
+            // 
+            this.dgCPF.DataPropertyName = "CPF";
+            this.dgCPF.HeaderText = "CPF";
+            this.dgCPF.Name = "dgCPF";
+            this.dgCPF.ReadOnly = true;
+            // 
+            // dgTelefone
+            // 
+            this.dgTelefone.DataPropertyName = "Telefone";
+            this.dgTelefone.HeaderText = "Telefone";
+            this.dgTelefone.Name = "dgTelefone";
+            this.dgTelefone.ReadOnly = true;
+            // 
+            // dgEmail
+            // 
+            this.dgEmail.DataPropertyName = "Email";
+            this.dgEmail.HeaderText = "Email";
+            this.dgEmail.Name = "dgEmail";
+            this.dgEmail.ReadOnly = true;
+            // 
+            // dgSexo
+            // 
+            this.dgSexo.DataPropertyName = "Sexo";
+            this.dgSexo.HeaderText = "Sexo";
+            this.dgSexo.Name = "dgSexo";
+            this.dgSexo.ReadOnly = true;
+            // 
+            // dgEndereco
+            // 
+            this.dgEndereco.DataPropertyName = "Endereco";
+            this.dgEndereco.HeaderText = "Endereco";
+            this.dgEndereco.Name = "dgEndereco";
+            this.dgEndereco.ReadOnly = true;
+            // 
+            // dgDataNascimento
+            // 
+            this.dgDataNascimento.DataPropertyName = "DataNascimento";
+            this.dgDataNascimento.HeaderText = "DataNascimento";
+            this.dgDataNascimento.Name = "dgDataNascimento";
+            this.dgDataNascimento.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +312,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Clientes Advocacia";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -262,6 +341,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnDeletar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgClienteID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCPF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTelefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgEndereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDataNascimento;
     }
 }
 
