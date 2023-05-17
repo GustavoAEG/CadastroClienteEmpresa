@@ -56,15 +56,47 @@ namespace CadastroClienteEmpresa
 
             using(EFBANCO_CLIENTEEntities db = new EFBANCO_CLIENTEEntities())
             {
-                if (model.ID == 0)
-                    db.Clientes.Add(model);
+                string email = txtEmail.Text;
+
+                if (IsValidEmail(email))
+                {
+                    // O e-mail é válido, faça o que desejar aqui
+                    MessageBox.Show("O e-mail é válido. Salvando...");
+
+                    if (model.ID == 0)
+                        db.Clientes.Add(model);
+                    else
+                        db.Entry(model).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    Clear();
+                    LoadData();
+                    MessageBox.Show("Salvo com sucesso!");
+
+                    // Adicione o código para salvar o e-mail ou realizar outras ações necessárias
+                }
                 else
-                    db.Entry(model).State = EntityState.Modified;
-                db.SaveChanges();
+                {
+                    // O e-mail é inválido, exiba uma mensagem de erro
+                    MessageBox.Show("O e-mail inserido é inválido. Por favor, insira um e-mail válido.");
+                    Clear();
+                    this.ActiveControl = txtNome;
+                    LoadData();
+                }
+
+
+              
             }
-            Clear();
-            LoadData();
-            MessageBox.Show("Salvo com sucesso!");
+ 
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            // Padrão de expressão regular para validar o e-mail
+            string emailPattern = @"^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$";
+
+            // Verificar se o e-mail corresponde ao padrão
+            return System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern);
         }
 
         void LoadData()
