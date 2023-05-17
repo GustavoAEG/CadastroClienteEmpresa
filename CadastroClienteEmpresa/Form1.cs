@@ -208,32 +208,6 @@ namespace CadastroClienteEmpresa
                 }
             }
         }
-        private void SetPlaceholderText(TextBox textBox, string placeholderText)
-        {
-            // Define o texto sombra no campo
-            textBox.Text = placeholderText;
-            textBox.ForeColor = SystemColors.GrayText;
-
-            // Manipula o evento Enter para limpar o campo quando o usuário entrar nele
-            textBox.Enter += (s, e) =>
-            {
-                if (textBox.Text == placeholderText)
-                {
-                    textBox.Text = "";
-                    textBox.ForeColor = SystemColors.ControlText;
-                }
-            };
-
-            // Manipula o evento Leave para restaurar o texto sombra quando o usuário sair do campo
-            textBox.Leave += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    textBox.Text = placeholderText;
-                    textBox.ForeColor = SystemColors.GrayText;
-                }
-            };
-        }
 
         private void label8_Click(object sender, EventArgs e)
         {
